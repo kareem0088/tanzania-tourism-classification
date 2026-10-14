@@ -7,7 +7,7 @@ RAW_DATA_DIR: Path = DATA_DIR / "raw"
 PROCESSED_DATA_DIR: Path = DATA_DIR / "processed"
 MODELS_DIR: Path = BASE_DIR / "models"
 
-for directory in [RAW_DATA_DIR, PROCESSED_DATA_DIR, MODELS_DIR, MLFLOW_TRACKING_DIR]:
+for directory in [RAW_DATA_DIR, PROCESSED_DATA_DIR, MODELS_DIR]:
     directory.mkdir(parents=True, exist_ok=True)
 
 TRAIN_DATA_PATH: Path = RAW_DATA_DIR / "Train.csv"
