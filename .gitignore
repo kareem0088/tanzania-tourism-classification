@@ -1,0 +1,23 @@
+# Ignore Anaconda project directories
+anaconda_projects/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore virtual environment directories
+.virtual_documents/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# Ignore environment files
+.env
+env/
+
+# Ignore data directories 
+# data is not available to the public from the data source,
+# so i will remove it from the repository.
+data/
+
