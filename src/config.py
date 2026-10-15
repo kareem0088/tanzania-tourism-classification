@@ -45,8 +45,7 @@ CATEGORICAL_COLS: List[str] = [
     "package_sightseeing",
     "package_guided_tour",
     "package_insurance",
-    "payment_mode",
-]
+    ]
 
 NUMERIC_FEATURES: List[str] = NUMERIC_COLS
 CATEGORICAL_FEATURES: List[str] = CATEGORICAL_COLS
