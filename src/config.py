@@ -6,8 +6,9 @@ DATA_DIR: Path = BASE_DIR / "data"
 RAW_DATA_DIR: Path = DATA_DIR / "raw"
 PROCESSED_DATA_DIR: Path = DATA_DIR / "processed"
 MODELS_DIR: Path = BASE_DIR / "models"
+MLFLOW_TRACKING_DIR: Path = BASE_DIR / "mlruns"
 
-for directory in [RAW_DATA_DIR, PROCESSED_DATA_DIR, MODELS_DIR]:
+for directory in [RAW_DATA_DIR, PROCESSED_DATA_DIR, MODELS_DIR, MLFLOW_TRACKING_DIR]:
     directory.mkdir(parents=True, exist_ok=True)
 
 TRAIN_DATA_PATH: Path = RAW_DATA_DIR / "Train.csv"
@@ -25,7 +26,8 @@ NUMERIC_COLS: List[str] = [
     "total_female",
     "total_male",
     "night_mainland",
-    "night_zanzibar",]
+    "night_zanzibar",
+]
 
 CATEGORICAL_COLS: List[str] = [
     "country",
@@ -46,6 +48,9 @@ CATEGORICAL_COLS: List[str] = [
     "payment_mode",
 ]
 
+NUMERIC_FEATURES: List[str] = NUMERIC_COLS
+CATEGORICAL_FEATURES: List[str] = CATEGORICAL_COLS
+
 TARGET_CLASSES: List[str] = [
     "Lower Cost",
     "Low Cost",
@@ -54,3 +59,11 @@ TARGET_CLASSES: List[str] = [
     "Higher Cost",
     "Highest Cost",
 ]
+
+MODEL_PARAMS: Dict[str, Any] = {
+    "n_estimators": 200,
+    "max_depth": 10,
+    "min_samples_split": 5,
+    "random_state": RANDOM_SEED,
+    "n_jobs": -1,
+}
