@@ -11,6 +11,7 @@ MLFLOW_TRACKING_DIR: Path = BASE_DIR / "mlruns"
 for directory in [RAW_DATA_DIR, PROCESSED_DATA_DIR, MODELS_DIR, MLFLOW_TRACKING_DIR]:
     directory.mkdir(parents=True, exist_ok=True)
 
+VARIABLE_DEFINITIONS_PATH = DATA_DIR / 'VariableDefinitions.csv'
 TRAIN_DATA_PATH: Path = RAW_DATA_DIR / "Train.csv"
 TEST_DATA_PATH: Path = RAW_DATA_DIR / "Test.csv"
 PROCESSED_TRAIN_PATH: Path = PROCESSED_DATA_DIR / "train_processed.parquet"
