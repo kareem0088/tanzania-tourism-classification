@@ -11,7 +11,9 @@ if str(project_root) not in sys.path:
 
 from src.config import NUMERIC_COLS
 
-
+#----------------------------------------------------------------------
+#  outliers analysis (outliers count and percentage). 
+#---------------------------------------------------------------------
 def outliers(df):
     for col in NUMERIC_COLS:
         Q1 = df[col].quantile(0.25)
@@ -26,6 +28,9 @@ def outliers(df):
 
         print(f"{col} | outliers : {outliers_count} - {count_per:.2f}%")
 
+#----------------------------------------------------------------------
+#  massing value analysis (number of missing values and percentage of missing values).
+#---------------------------------------------------------------------
 def massing_analysis(df):
     dic = {
 
