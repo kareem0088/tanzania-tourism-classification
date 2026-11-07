@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import numpy as np 
 import pandas as pd
 from src.config import TRAIN_DATA_PATH, TEST_DATA_PATH, NUMERIC_COLS, CATEGORICAL_COLS, ID_COL, TARGET_COL
@@ -7,8 +9,14 @@ class Data_Preprocessor:
         self.expected_columns = expected_columns
         self.is_train = is_train
 
-    def load_data(self, file_path: str) -> pd.DataFrame:
-        raw_df = pd.read_csv(file_path)
+    def load_data(self, file_path: Path) -> pd.DataFrame:
+        if file_path.endswith('.csv'):
+            raw_df = pd.read_csv(file_path)
+        elif file_path.endswith('.parquet'):
+            raw_df = pd.read_parquet(file_path)
+        else:
+            raise ValueError("Unsupported file format. Please provide a CSV or Parquet file.")
+
         if raw_df.shape[1] != self.expected_columns:
             raise ValueError("columns number unexpected.")
         return raw_df
@@ -21,8 +29,8 @@ class Data_Preprocessor:
             if col not in raw_df.columns:
                 raise KeyError(f"{col}, is missing.")
         
-            if not (pd.api.types.is_integer_dtype(raw_df[col])):
-                raw_df[col] = raw_df[col].astype('Int64')
+            #if not (pd.api.types.is_integer_dtype(raw_df[col])):
+                #raw_df[col] = raw_df[col].astype('Int64')
         
         for col in CATEGORICAL_COLS:
             if col not in raw_df.columns:
