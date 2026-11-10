@@ -2,7 +2,7 @@ from pathlib import Path
 
 import numpy as np 
 import pandas as pd
-from src.config import TRAIN_DATA_PATH, TEST_DATA_PATH, NUMERIC_COLS, CATEGORICAL_COLS, ID_COL, TARGET_COL
+from src.config import TRAIN_DATA_PATH, TEST_DATA_PATH, BASE_NUMERIC_COLS, BASE_CATEGORICAL_COLS, ID_COL, TARGET_COL
 
 class Data_Preprocessor:
     def __init__(self, expected_columns: int, is_train: bool = True ):
@@ -25,14 +25,14 @@ class Data_Preprocessor:
         if ID_COL not in raw_df.columns:
             raise KeyError(f"{ID_COL}, is missing.")
         
-        for col in NUMERIC_COLS:
+        for col in BASE_NUMERIC_COLS:
             if col not in raw_df.columns:
                 raise KeyError(f"{col}, is missing.")
         
             #if not (pd.api.types.is_integer_dtype(raw_df[col])):
                 #raw_df[col] = raw_df[col].astype('Int64')
         
-        for col in CATEGORICAL_COLS:
+        for col in BASE_CATEGORICAL_COLS:
             if col not in raw_df.columns:
                 raise KeyError(f"{col}, is missing.")
             if pd.api.types.is_object_dtype(raw_df[col]):

@@ -9,13 +9,13 @@ project_root = notebook_dir.parent
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
-from src.config import NUMERIC_COLS
+from src.config import BASE_NUMERIC_COLS
 
 #----------------------------------------------------------------------
 #  outliers analysis (outliers count and percentage). 
 #---------------------------------------------------------------------
 def outliers(df):
-    for col in NUMERIC_COLS:
+    for col in BASE_NUMERIC_COLS:
         Q1 = df[col].quantile(0.25)
         Q3 = df[col].quantile(0.75)
 
