@@ -1,3 +1,15 @@
+"""
+src/utils.py
+===================
+Module Specifications:
+- Provide general utility and helper functions for data
+  inspection, including exploratory data analysis (EDA) 
+  tasks such as detecting outliers using the IQR method 
+  and analyzing missing values.
+- Centralize reusable helper functions to support data 
+  quality checks and validation across the pipeline.
+"""
+
 from pathlib import Path
 import sys 
 import numpy as np

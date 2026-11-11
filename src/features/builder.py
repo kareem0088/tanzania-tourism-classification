@@ -1,6 +1,15 @@
+"""
+src/features/builder.py
+========================
+Module Specifications:
+- Build, extract, and engineer candidate features as
+  detailed in notebooks/04_feature_engineering.ipynb 
+  (including extracting continent data, ratios, shares,
+  and processing variables like adults_per_night).
+"""
+
 import numpy as np
 import pandas as pd
-
 from src.config import TEST_DATA_PATH, TRAIN_DATA_PATH, FEATURES_DIR
 
 continent_mapping = {

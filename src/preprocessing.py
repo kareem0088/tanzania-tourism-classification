@@ -1,5 +1,12 @@
-from pathlib import Path
+"""
+src/preprocessing.py
+=====================
+Module Specifications:
+- Handle data preprocessing, data cleaning, and initial transformations based on notebooks/02_data_preprocessing.ipynb before feature engineering and training.
+- Note: This script must be executed first to initialize, build, and save the required data files and directories before running the pipeline.
+"""
 
+from pathlib import Path
 import numpy as np 
 import pandas as pd
 from src.config import TRAIN_DATA_PATH, TEST_DATA_PATH, BASE_NUMERIC_COLS, BASE_CATEGORICAL_COLS, ID_COL, TARGET_COL

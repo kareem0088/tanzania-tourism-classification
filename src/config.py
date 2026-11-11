@@ -1,3 +1,18 @@
+"""
+src/config.py
+==============
+Module Specifications:
+- Define global configuration paths, data directories, and 
+  column definitions (including numeric, categorical, ID, and 
+  target columns).
+- Centralize all hyperparameters and project settings to maintain
+  consistency across training, evaluation, and feature engineering
+  pipelines.
+- Note: This script must be executed first to initialize,
+  build, and save the required data files and directories
+  before running the pipeline.
+"""
+
 from pathlib import Path
 from typing import Dict, Any, List
 from sqlalchemy import create_engine, text
