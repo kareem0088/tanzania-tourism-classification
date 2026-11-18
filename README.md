@@ -1,4 +1,30 @@
-# Tanzania Tourism Cost Classification
+<h1 align="center">🌍 Tanzania Tourism Cost Classification</h1>
+
+<p align="center"><i>From raw tourist records to a tracked, explainable, production-minded ML pipeline.</i></p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas"/>
+  <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy"/>
+  <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white" alt="scikit-learn"/>
+  <img src="https://img.shields.io/badge/XGBoost-1A73E8?style=for-the-badge&logo=xgboost&logoColor=white" alt="XGBoost"/>
+</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/MLflow-0194E2?style=for-the-badge&logo=mlflow&logoColor=white" alt="MLflow"/>
+  <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter"/>
+  <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white" alt="Matplotlib"/>
+  <img src="https://img.shields.io/badge/Seaborn-4C72B0?style=for-the-badge&logoColor=white" alt="Seaborn"/>
+  <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite"/>
+  <img src="https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white" alt="SQLAlchemy"/>
+  <img src="https://img.shields.io/badge/Parquet-50ABF1?style=for-the-badge&logo=apacheparquet&logoColor=white" alt="Parquet"/>
+</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/SHAP-planned-FF0051?style=for-the-badge" alt="SHAP (planned)"/>
+  <img src="https://img.shields.io/badge/Apache_Kafka-planned-231F20?style=for-the-badge&logo=apachekafka&logoColor=white" alt="Kafka (planned)"/>
+  <img src="https://img.shields.io/badge/Data-Zindi_CC--BY--SA_4.0-2EA44F?style=for-the-badge" alt="Data license"/>
+</p>
+
+---
 
 Predicting how much a tourist spends in Tanzania, as a **6-class classification** problem built on the Zindi *Tanzania Tourism Classification Challenge* dataset. The project follows a notebook-first workflow (EDA → preprocessing → baseline → feature engineering → …) and moves finished logic into a reusable `src/` pipeline, with every experiment tracked in MLflow.
 
@@ -41,8 +67,8 @@ Tracked on the [GitHub project board](https://github.com/users/kareem0088/projec
 | | #9 | 04 – Data cleaning, missing values, outlier treatment | ✅ Done |
 | | #10 | 06 – Modular feature engineering & transformation pipeline | ✅ Done |
 | **3. Modeling & Experimentation** | #4 | 05 – Train & evaluate initial baseline classifier | ✅ Done |
-| | #6 | 07 – MLflow experiment tracking & model registry | 🔲 Open |
-| | #21 | 08 – Generative synthetic data & training-set balancing | 🔲 Open |
+| | #6 | 07 – MLflow experiment tracking & model registry | 🚧 In progress |
+| | #21 | 08 – Generative synthetic data & training-set balancing | 🚧 In progress |
 | | #8 | 09 – Exploratory research & algorithm benchmarking | 🔲 Open |
 | **4. Validation & Explainability (XAI)** | #5 | 10 – Cross-validation & SHAP explanations | 🔲 Open |
 | **5. MLOps, Testing & Serving** | #15 | 11 – Synthetic feature generator & Kafka streaming producer | 🔲 Open |
@@ -53,7 +79,7 @@ Notebooks `05`–`08` are placeholders for the open modeling tasks.
 
 ## What has been done
 
-**EDA** — missing values, duplicates, numeric and categorical profiling, target analysis, correlations, and outliers.
+**EDA** — missing values, duplicates, numeric and categorical profiling, target analysis, correlations and outliers.
 
 **Preprocessing** — schema checks between train and test, standardised country labels, corrected `main_activity` labels, validated ID uniqueness, no infinite values, consistent dtypes (`src/preprocessing.py`).
 
@@ -98,10 +124,10 @@ tanzania-tourism-classification/
 │   ├── 02_data_preprocessing.ipynb
 │   ├── 03_baseline_model.ipynb
 │   ├── 04_feature_engineering.ipynb
-│   ├── 05_synthetic_data_generation.ipynb 
-│   ├── 06_hyperparameter_tuning.ipynb    
-│   ├── 07_model_evaluation.ipynb          
-│   └── 08_model_experimentation.ipynb    
+│   ├── 05_synthetic_data_generation.ipynb # placeholder
+│   ├── 06_hyperparameter_tuning.ipynb     # placeholder
+│   ├── 07_model_evaluation.ipynb          # placeholder
+│   └── 08_model_experimentation.ipynb     # placeholder
 │
 ├── src/
 │   ├── __init__.py
@@ -127,6 +153,9 @@ tanzania-tourism-classification/
 git clone https://github.com/kareem0088/tanzania-tourism-classification.git
 cd tanzania-tourism-classification
 
+python -m venv env && source env/bin/activate
+pip install numpy pandas matplotlib seaborn scikit-learn xgboost mlflow sqlalchemy pyarrow jupyter
+
 # initialise folders and the MLflow SQLite store
 python -m src.config
 
@@ -143,8 +172,7 @@ Then open the notebooks in order, starting from `notebooks/01_statistical_eda.ip
 
 ## Data & license
 
-The dataset comes from the Zindi *Tanzania Tourism Classification Challenge* and is licensed **CC-BY-SA 4.0** for non-commercial, research and educational use. Only the official competition data and public open-source packages are used — no AutoML tools or external data. See [`data/README.md`](data/README.md).
-
+The dataset comes from the Zindi *Tanzania Tourism Classification Challenge* and is licensed **CC-BY-SA 4.0** for non-commercial, research and educational use. The only data source is the official competition data, together with public open-source packages — no AutoML tools and no outside datasets. Synthetic samples (task #21) are generated *from the official training data only*, on training folds only, and never from the test set or any external source. See [`data/README.md`](data/README.md).
 
 ## Copyright and Usage
 
@@ -156,4 +184,3 @@ and educational review purposes only.
 No permission is granted to copy, reproduce, modify, distribute,
 or use any part of this project's source code without prior
 written permission from the copyright owner.
-
