@@ -44,6 +44,24 @@ Given a tourist's trip profile (origin country, age group, travel companions, pu
 
 ---
 
+## The data challenge
+
+Two properties of this dataset make the problem genuinely hard, and they drive most of the design decisions in this project.
+
+**1. Heavily imbalanced target.** `Normal Cost` has about 15× more rows than `Highest Cost` (5,471 vs 359), and `Low Cost` is also under-represented. A model can look decent on accuracy while almost ignoring the rare classes — which is why macro F1, class-balanced weights and synthetic balancing (#21) are part of the plan.
+
+<p align="center">
+  <img src="assets/target_distribution.png" alt="Target class distribution" width="520"/>
+</p>
+
+**2. Extreme outliers in the numeric features.** Most tourists travel in small groups and stay a short time, but the tails are very long: group sizes reach roughly 50–60 people and stays reach roughly 365 nights on the mainland and 240 in Zanzibar. These values distort scale-sensitive features and ratios, so outlier handling and feature design (shares, `adults_per_night`) matter.
+
+<p align="center">
+  <img src="assets/outliers_numeric_features.png" alt="Outlier analysis for numerical features" width="760"/>
+</p>
+
+---
+
 ## Results so far
 
 | Experiment | Accuracy | Macro F1 |
@@ -140,6 +158,10 @@ tanzania-tourism-classification/
 │   └── features/
 │       ├── builder.py                     # Feature engineering
 │       └── encoding.py                    # Encoders (fit on train only)
+│
+├── assets/
+│   ├── target_distribution.png            # Target class counts (used in this README)
+│   └── outliers_numeric_features.png      # Outlier box plots (used in this README)
 │
 └── models/
     └── baseline-model.json                # Saved XGBoost baseline
